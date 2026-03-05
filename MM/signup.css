@@ -1,0 +1,34 @@
+function fadeOutPage(event) {
+    event.preventDefault(); // Stop immediate navigation
+    
+    // First, ensure the body has transition property
+    document.body.style.transition = 'opacity 0.2s ease';
+    
+    // Fade out the body
+    document.body.style.opacity = '0';
+    
+    // Navigate after fade out
+    setTimeout(() => {
+        window.location.href = event.target.href;
+    }, 200);
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username && password) {
+        window.location.href = 'shop.html';
+    } else {
+        alert('Please enter both username and password.');
+    }
+});
+
+function showContent(sectionId) {
+    let sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => section.style.display = 'none');
+    
+    document.getElementById(sectionId).style.display = 'block';
+}
